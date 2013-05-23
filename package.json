@@ -1,6 +1,6 @@
 {
     "name": "github-notify",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "description": "Send emails when new GitHub Issues are created for a repo",
     "main": "index.js",
     "dependencies": {
@@ -10,7 +10,9 @@
         "async": "0.2.8",
         "eco": "1.1.0-rc-3",
         "underscore": "1.4.4",
-        "marked": "0.2.8"
+        "marked": "0.2.8",
+        "flatiron": "0.3.4",
+        "union": "0.3.7"
     },
     "scripts": {
         "start": "index.js",

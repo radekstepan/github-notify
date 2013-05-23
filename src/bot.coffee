@@ -5,6 +5,8 @@ nodemailer = require 'nodemailer'
 marked     = require 'marked'
 eco        = require 'eco'
 { _ }      = require 'underscore'
+flatiron   = require 'flatiron'
+union      = require 'union'
 
 # Read the config a validate it.
 config = require '../config.json'
@@ -18,7 +20,7 @@ for key, opts of spec then do (key, opts) ->
             throw "Missing property `#{key}` in config file"
 
     # Correct type?
-    unless typeof property is opts.type
+    if property and typeof property isnt opts.type
         throw "Incorrect type `#{key}` in config file"
 
 # New client.
@@ -70,3 +72,21 @@ check = ->
 
 # Init polling.
 setInterval check, config.timeout * 6e4
+
+# Expose a minimal service.
+app = flatiron.app
+app.use flatiron.plugins.http, {}
+
+# Create a 'safe' version of the config.
+safe_config = JSON.parse JSON.stringify config
+delete safe_config.github.authenticate
+delete safe_config.email.smtp
+
+app.router.path '/', ->
+    @get ->
+        @res.writeHead 200, 'content-type': 'application/json'
+        @res.write JSON.stringify safe_config
+        @res.end()
+
+app.start process.env.PORT, (err) ->
+    throw err if err

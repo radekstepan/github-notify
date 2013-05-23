@@ -36,3 +36,5 @@ And finally start it all up (exceptions are thrown, nothing is logged, nothing i
 ```bash
 $ node index.js
 ```
+
+There is also a service on `/` started on an automatic port or one specified through command line.
