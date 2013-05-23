@@ -1,0 +1,29 @@
+{
+    "name": "github-notify",
+    "version": "0.1.0",
+    "description": "Send emails when new GitHub Issues are created for a repo",
+    "main": "index.js",
+    "dependencies": {
+        "coffee-script": "1.6.2",
+        "node-github": "git://github.com/mikedeboer/node-github.git#master",
+        "nodemailer": "0.4.4",
+        "async": "0.2.8",
+        "eco": "1.1.0-rc-3",
+        "underscore": "1.4.4",
+        "marked": "0.2.8"
+    },
+    "scripts": {
+        "start": "index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/radekstepan/github-notify.git"
+    },
+    "keywords": [
+        "github",
+        "smtp",
+        "notifier"
+    ],
+    "author": "Radek <rs676@cam.ac.uk>"
+}

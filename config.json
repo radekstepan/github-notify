@@ -1,0 +1,30 @@
+{
+    "timeout": 5,
+    "github": {
+        "user": "github_username",
+        "repo": "github_repo",
+        "authenticate": {
+            "type": "oauth",
+            "token": "some_oauth_token"
+        }
+    },
+    "email": {
+        "fields": {
+            "from": "GitHub Notify Bot <piracy@microsoft.com>",
+            "to": "Mailing list <some@domain.uk>"
+        },
+        "smtp": {
+            "host": "smtp.gmail.com",
+            "port": 465,
+            "secureConnection": true,
+            "auth": {
+                "user": "username@gmail.com",
+                "pass": "password"
+            }
+        },
+        "template": {
+            "subject": "[<%= @github.repo %>] <%= @issue.title %> (#<%= @issue.number %>)",
+            "html": "<%- @issue.body + '<hr>' if @issue.body %><p><a href='<%= @issue.html_url %>'><%= @issue.html_url %></a></p>"
+        }
+    }
+}

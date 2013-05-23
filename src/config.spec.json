@@ -1,0 +1,46 @@
+{
+    "timeout": {
+        "type": "number",
+        "required": true
+    },
+    "github": {
+        "type": "object",
+        "required": true
+    },
+    "github.user": {
+        "type": "string",
+        "required": true
+    },
+    "github.repo": {
+        "type": "string",
+        "required": true
+    },
+    "github.authenticate": {
+        "type": "object",
+        "required": false
+    },
+    "email": {
+        "type": "object",
+        "required": true
+    },
+    "email.fields": {
+        "type": "object",
+        "required": true
+    },
+    "email.smtp": {
+        "type": "object",
+        "required": true
+    },
+    "email.template": {
+        "type": "object",
+        "required": true
+    },
+    "email.template.subject": {
+        "type": "string",
+        "required": true
+    },
+    "email.template.html": {
+        "type": "string",
+        "required": true
+    }
+}
