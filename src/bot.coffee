@@ -52,8 +52,6 @@ mail = (issue, cb) ->
 
     winston.data "#{issue.title.bold} (##{issue.number}) created `#{issue.created_at}`"
 
-    return cb null
-
     # Merge the fields from config onto our generated fields & send.
     transport.sendMail _.extend(fields, config.email.fields), cb
 
