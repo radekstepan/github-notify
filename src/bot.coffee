@@ -96,7 +96,8 @@ do check = ->
         winston.help 'New issues may have been created'
         async.eachSeries data, mail, (err) ->
             throw err if err
-            since = +new Date(data[0].created_at) # update the since time to the last created_at
+            # Update the since time to the last created_at?
+            if (new_since = +new Date(data[0].created_at)) > since then since = new_since
             running = false # no longer running
 
 # Init polling.
