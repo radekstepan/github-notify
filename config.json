@@ -1,8 +1,8 @@
 {
-    "timeout": 0.5,
+    "timeout": 5,
     "github": {
         "user": "radekstepan",
-        "repo": "throw-away-1",
+        "repo": "github-notify",
         "authenticate": {
             "type": "oauth",
             "token": "f65625456d826f4a2d03ef384d8d0293d71e11ac"
