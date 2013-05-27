@@ -54,11 +54,11 @@ errParser = (input) ->
 
     input
 
-errHandler = (err) ->
+errHandler = (err, type='alert') ->
     jb.save 'events',
         'text': errParser err
         'time': +new Date
-        'type': 'alert'
+        'type': type
 
 eventHandler = (obj) ->
     obj.time = +new Date
@@ -85,7 +85,10 @@ mail = (issue, cb) ->
     eventHandler 'text': issue.title + ' (#' + issue.number + ')', 'type': 'good'
 
     # Merge the fields from config onto our generated fields & send.
-    transport.sendMail _.extend(fields, config.email.fields), cb
+    transport.sendMail _.extend(fields, config.email.fields), (err) ->
+        # Although not ideal, do not die on the batch if email errors.
+        if err then errHandler err, 'warn'
+        cb null
 
 # Will be a time of the last issue we have (in int).
 since = null
@@ -129,7 +132,7 @@ do check = ->
             running = false # no longer running
 
 # Init polling.
-setInterval check, config.timeout * 6e4
+interval = setInterval check, config.timeout * 6e4
 
 # Expose a status page.
 app = flatiron.app
@@ -199,5 +202,15 @@ app.router.path '/', ->
                 res.write JSON.stringify { 'error': errParser(err) }
                 res.end()
 
+# On close.
+process.on 'SIGINT', ->
+    # Stop the timeout.
+    clearInterval interval
+    # Kill the server.
+    process.nextTick app.server.close
+    # If we are lingering.
+    setTimeout process.exit, 1000
+
+# Startup.
 app.start process.env.PORT, (err) ->
     throw err if err
