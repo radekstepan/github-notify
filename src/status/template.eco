@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>github-notify</title>
+    <style><%- @style %></style>
+</head>
+<body>
+    <div class="logo row">
+        <% if @config.timeout > 1: %>
+            <div class="updated">updated at most <%- @config.timeout %> minutes ago</div>
+        <% else: %>
+            <div class="updated">updated at most a minute ago</div>
+        <% end %>
+        <a href="https://github.com/radekstepan/github-notify/issues" title="Fork me on GitHub">
+            <img src="data:image/png;base64,<%- @logo %>" />
+        </a>
+    </div>
+    
+    <div class="header row">
+        <a href="https://github.com/<%= @config.github.user %>/<%= @config.github.repo %>" class="repo">@<%= @config.github.user %>/<%= @config.github.repo %></a>
+        <h1>Status Messages</h1>
+    </div>
+
+    <% time = null %>
+    <% for message in @messages: %>
+        <% new_time = if message.time.today then 'Today' else message.time.formatted %>
+        <% if new_time isnt time: %>
+            <h2><%= new_time %></h2>
+            <% time = new_time %>
+        <% end %>
+        <div class="<%= message.type %> message">
+            <span class="time" title="<%= message.time.iso %>"><%= message.time.formatted %></span>
+            <span class="title"><%= message.text %></span>
+        </div>
+    <% end %>
+</body>
+</html>

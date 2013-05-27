@@ -1,0 +1,72 @@
+body
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif
+    width: 600px
+    margin: 0 auto
+    padding: 40px
+    background: #fff
+
+.row
+    margin: 20px 0
+
+    &:after
+        clear: both
+        content: ""
+        display: block
+
+h1
+    font-size: 18px
+    color: #333
+    float: left
+    margin: 0
+
+h2
+    font-size: 13px
+    color: #333
+    border-bottom: 1px solid #e8e8e8
+    margin: 0 0 8px 0
+    padding: 0 0 8px 0
+
+a
+    text-decoration: none
+
+.repo
+    float: right
+    font-size: 13px
+    font-weight: bold
+    color: #39c
+
+.updated
+    color: #727272
+    text-transform: uppercase
+    font-weight: bold
+    font-size: 13px
+    float: right
+    line-height: 50px
+
+$time_width = 150px
+
+.message
+    font-size: 13px
+    margin-bottom: 20px
+    padding-left: $time_width
+
+    .time
+        color: #999
+        width: $time_width
+        float: left
+        margin-left: - $time_width
+
+    .title
+        font-weight: bold
+
+    &.good
+        .title
+            color: #339966
+
+    &.warn
+        .title
+            color: #f29d50
+
+    &.alert
+        .title
+            color: #cc3300

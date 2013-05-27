@@ -1,11 +1,11 @@
 {
-    "timeout": 5,
+    "timeout": 0.5,
     "github": {
-        "user": "github_username",
-        "repo": "github_repo",
+        "user": "radekstepan",
+        "repo": "throw-away-1",
         "authenticate": {
             "type": "oauth",
-            "token": "some_oauth_token"
+            "token": "f65625456d826f4a2d03ef384d8d0293d71e11ac"
         }
     },
     "email": {

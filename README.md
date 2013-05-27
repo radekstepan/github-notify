@@ -2,9 +2,12 @@
 
 Send emails when new GitHub Issues are created for a repo.
 
+![image](https://raw.github.com/radekstepan/github-notify/master/example.png)
+
 ## Quickstart
 
 ```bash
+$ sudo apt-get install g++ zlib1g zlib1g-dev autoconf
 $ npm install github-notify
 ```
 
@@ -31,7 +34,7 @@ For config of these follow instructions at [Nodemailer](https://github.com/andri
 ##### email.template
 An object with two [Eco](https://github.com/sstephenson/eco) templates for building the email. Plaintext is auto-generated from the HTML version.
 
-And finally start it all up (exceptions are thrown, nothing is exported):
+And finally start it all up:
 
 ```bash
 $ node index.js
