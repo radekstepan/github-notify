@@ -44,6 +44,12 @@ client.authenticate config.github.authenticate if config.github.authenticate
 # SMTP transporter.
 transport = nodemailer.createTransport 'SMTP', config.email.smtp
 
+# Will be a time of the last issue we have (in int).
+since = null
+
+# State switch.
+running = false
+
 errParser = (input) ->
     if typeof input is 'object'
         if input.message
@@ -59,6 +65,8 @@ errHandler = (err, type='alert') ->
         'text': errParser err
         'time': +new Date
         'type': type
+
+    if type is 'alert' then running = false
 
 eventHandler = (obj) ->
     obj.time = +new Date
@@ -89,12 +97,6 @@ mail = (issue, cb) ->
         # Although not ideal, do not die on the batch if email errors.
         if err then errHandler err, 'warn'
         cb null
-
-# Will be a time of the last issue we have (in int).
-since = null
-
-# State switch.
-running = false
 
 do check = ->
     return if running # are we running?
