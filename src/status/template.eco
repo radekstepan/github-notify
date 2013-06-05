@@ -12,13 +12,13 @@
         <% else: %>
             <div class="updated">updated at most a minute ago</div>
         <% end %>
-        <a href="https://github.com/radekstepan/github-notify/issues" title="Fork me on GitHub">
+        <a href="https://github.com/radekstepan/github-notify" title="Fork me on GitHub">
             <img src="data:image/png;base64,<%- @logo %>" />
         </a>
     </div>
     
     <div class="header row">
-        <a href="https://github.com/<%= @config.github.user %>/<%= @config.github.repo %>" class="repo">@<%= @config.github.user %>/<%= @config.github.repo %></a>
+        <a href="https://github.com/<%= @config.github.user %>/<%= @config.github.repo %>/issues" class="repo">@<%= @config.github.user %>/<%= @config.github.repo %></a>
         <h1>Status Messages</h1>
     </div>
 
@@ -30,8 +30,12 @@
             <% time = new_time %>
         <% end %>
         <div class="<%= message.type %> message">
-            <span class="time" title="<%= message.time.iso %>"><%= message.time.formatted %></span>
-            <span class="title"><%= message.text %></span>
+            <div class="time"><span title="<%= message.time.iso %>"><%= message.time.formatted %></span></div>
+            <% if message.url: %>
+                <span class="title"><a href="<%- message.url %>"><%= message.text %></a></span>
+            <% else: %>
+                <span class="title"><%= message.text %></span>
+            <% end %>
         </div>
     <% end %>
 </body>

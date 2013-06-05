@@ -13,6 +13,9 @@ eco        = require 'eco'
 fs         = require 'fs'
 stylus     = require 'stylus'
 timeago    = require 'timeago'
+baddies    = require 'connect-baddies'
+
+pkg = require '../package.json'
 
 # Read the config a validate it.
 config = require '../config.json'
@@ -73,7 +76,7 @@ eventHandler = (obj) ->
     jb.save 'events', obj
 
 # Say we are booting.
-eventHandler 'text': 'Bot online', 'type': 'good'
+eventHandler 'text': "Bot v#{pkg.version} online", 'type': 'good'
 
 # Maybe send an email with new issue details.
 mail = (issue, cb) ->
@@ -89,8 +92,11 @@ mail = (issue, cb) ->
         fields[key] = eco.render config.email.template[key],
             'issue':  issue
             'github': config.github
-    
-    eventHandler 'text': issue.title + ' (#' + issue.number + ')', 'type': 'good'
+
+    eventHandler
+        'text': "@#{issue.user.login}: #{issue.title} (##{issue.number})"
+        'type': 'good'
+        'url': issue.html_url
 
     # Merge the fields from config onto our generated fields & send.
     transport.sendMail _.extend(fields, config.email.fields), (err) ->
@@ -138,7 +144,8 @@ interval = setInterval check, config.timeout * 6e4
 
 # Expose a status page.
 app = flatiron.app
-app.use flatiron.plugins.http, {}
+app.use flatiron.plugins.http,
+    'before': [ baddies() ]
 
 app.router.path '/', ->
     @get ->
@@ -154,7 +161,7 @@ app.router.path '/', ->
                         message.time =
                             'iso': time.toISOString()
                             'formatted': ago = timeago time
-                            'today': /hour|minute/.test ago
+                            'today': /hour|minute/i.test ago
                     data.push message
 
                 cb null, data

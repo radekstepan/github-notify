@@ -26,22 +26,31 @@ h2
     margin: 0 0 8px 0
     padding: 0 0 8px 0
 
+    &:first-letter
+        text-transform: uppercase
+
 a
+    color: inherit
     text-decoration: none
 
-.repo
-    float: right
-    font-size: 13px
-    font-weight: bold
-    color: #39c
+.logo
+    .updated
+        color: #727272
+        text-transform: uppercase
+        font-weight: bold
+        font-size: 13px
+        float: right
+        line-height: 50px
 
-.updated
-    color: #727272
-    text-transform: uppercase
-    font-weight: bold
-    font-size: 13px
-    float: right
-    line-height: 50px
+.header
+    a.repo
+        float: right
+        font-size: 13px
+        font-weight: bold
+        color: #39c
+        
+        &:hover
+            color: #003366
 
 $time_width = 150px
 
