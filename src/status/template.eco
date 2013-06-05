@@ -19,8 +19,16 @@
     
     <div class="header row">
         <a href="https://github.com/<%= @config.github.user %>/<%= @config.github.repo %>/issues" class="repo">@<%= @config.github.user %>/<%= @config.github.repo %></a>
-        <h1>Status Messages</h1>
+        <% if @paginator.today: %>
+            <h1>Status Messages Week Ending <%= @paginator.today %></h1>
+        <% else: %>
+            <h1>Status Messages</h1>
+        <% end %>
     </div>
+
+    <% if @messages.length is 0: %>
+    <p class="info">Nothing has happened.</p>
+    <% end %>
 
     <% time = null %>
     <% for message in @messages: %>
@@ -38,5 +46,14 @@
             <% end %>
         </div>
     <% end %>
+
+    <div class="pagination">
+        <% if @paginator.next: %>
+            <a href="/messages/<%= @paginator.next %>" class="next">Next Week »</a>
+        <% else: %>
+            <a class="disabled next">Next Week »</a>
+        <% end %>
+        <a href="/messages/<%= @paginator.previous %>" class="prev">« Previous Week</a>
+    </div>
 </body>
 </html>

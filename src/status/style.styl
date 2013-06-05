@@ -4,6 +4,7 @@ body
     margin: 0 auto
     padding: 40px
     background: #fff
+    color: #333
 
 .row
     margin: 20px 0
@@ -15,19 +16,21 @@ body
 
 h1
     font-size: 18px
-    color: #333
     float: left
     margin: 0
 
 h2
     font-size: 13px
-    color: #333
     border-bottom: 1px solid #e8e8e8
     margin: 0 0 8px 0
     padding: 0 0 8px 0
 
     &:first-letter
         text-transform: uppercase
+
+p
+    font-size: 13px
+    color: #727272
 
 a
     color: inherit
@@ -79,3 +82,19 @@ $time_width = 150px
     &.alert
         .title
             color: #cc3300
+
+.pagination
+    border: 1px solid #e8e8e8
+    padding: 8px 15px
+    font-weight: bold
+    font-size: 13px
+    margin-top: 30px
+
+    a
+        color: #39c
+
+        &.disabled
+            color: #ccc
+
+        &.next
+            float: right
