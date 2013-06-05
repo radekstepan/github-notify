@@ -23,7 +23,7 @@
             }
         },
         "template": {
-            "subject": "[<%= @github.repo %>] @<%= @issue.user.login %>: <%= @issue.title %> (#<%= @issue.number %>)",
+            "subject": "[<%= @github.repo %>] @<%= @issue.user.login %>: <%- @issue.title %> (#<%= @issue.number %>)",
             "html": "<%- @issue.body + '<hr>' if @issue.body %><p><a href='<%= @issue.html_url %>'><%= @issue.html_url %></a></p>"
         }
     }
