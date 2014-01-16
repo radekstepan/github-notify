@@ -27,5 +27,8 @@
         "smtp",
         "notifier"
     ],
-    "author": "Radek <rs676@cam.ac.uk>"
+    "author": "Radek <rs676@cam.ac.uk>",
+    "engines": {
+        "node": "0.10.x"
+    }
 }
