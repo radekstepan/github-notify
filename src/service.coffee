@@ -32,6 +32,22 @@ for key, opts of spec then do (key, opts) ->
     if property and typeof property isnt opts.type
         throw "Incorrect type `#{key}` in config file"
 
+# Replace config with env variables.
+(replace = (obj) ->
+    for key, value of obj
+        switch
+            # Replace strings...
+            when _.isString value
+                # ...that start with a `$` sign.
+                continue unless value[0] is '$'
+                # Make the replacement if we are defined.
+                obj[key] = value if value = process.env[value[1...]]
+
+            # Nested.
+            when _.isObject value
+                replace value
+) config
+
 # Root dir.
 dir = path.resolve __dirname, '../'
 

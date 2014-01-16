@@ -41,3 +41,15 @@ $ node index.js
 ```
 
 There is also a service on `/` started on an automatic port or one specified through command line.
+
+##ENV
+
+One can use ENV variables in the config.
+
+Replace the value in the `config.json` file with a string that begins with a `$` followed by the ENV variable path. The app will recognize that and get the value from the environment. Example:
+
+`"$GITHUB_TOKEN"` > `process.env.GITHUB_TOKEN`
+
+##FYI
+
+The data is stored in a flat file `EJDB` database, app reload on PaaS platforms like Heroku will probably wipe your history.

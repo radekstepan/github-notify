@@ -1,25 +1,25 @@
 {
-    "timeout": 5,
+    "timeout": 3,
     "github": {
-        "user": "radekstepan",
-        "repo": "github-notify",
+        "user": "intermine",
+        "repo": "intermine",
         "authenticate": {
             "type": "oauth",
-            "token": "f65625456d826f4a2d03ef384d8d0293d71e11ac"
+            "token": "$GITHUB_TOKEN"
         }
     },
     "email": {
         "fields": {
-            "from": "GitHub Notify Bot <piracy@microsoft.com>",
-            "to": "Mailing list <some@domain.uk>"
+            "from": "GitHub Notify Bot <flymine.org@gmail.com>",
+            "to": [ "julie@flymine.org", "radek@intermine.org", "alex@intermine.org", "jkh46@cam.ac.uk", "sc486@cam.ac.uk" ]
         },
         "smtp": {
             "host": "smtp.gmail.com",
             "port": 465,
             "secureConnection": true,
             "auth": {
-                "user": "username@gmail.com",
-                "pass": "password"
+                "user": "flymine.org@gmail.com",
+                "pass": "$SMTP_AUTH"
             }
         },
         "template": {
