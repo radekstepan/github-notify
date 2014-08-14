@@ -10,7 +10,7 @@
         "async": "0.2.8",
         "eco": "1.1.0-rc-3",
         "underscore": "1.4.4",
-        "marked": "0.2.8",
+        "marked": "0.3.2",
         "flatiron": "0.3.4",
         "union": "0.3.7",
         "ejdb": "1.1.6-0",
