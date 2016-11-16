@@ -12,7 +12,7 @@ path       = require 'path'
 eco        = require 'eco'
 fs         = require 'fs'
 stylus     = require 'stylus'
-timeago    = require 'timeago'
+timeago    = new require 'timeago' 
 baddies    = require 'connect-baddies'
 
 pkg = require '../package.json'
@@ -217,7 +217,7 @@ respond = (res, week) ->
                 if (time = new Date message.time) # parse time
                     message.time =
                         'iso': time.toISOString()
-                        'formatted': ago = timeago time
+                        'formatted': ago = timeago.format time
                         'today': /hour|minute/i.test ago
                 data.push message
 
