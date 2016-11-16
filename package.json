@@ -15,7 +15,7 @@
         "union": "0.3.7",
         "ejdb": "1.1.6-0",
         "stylus": "0.32.1",
-        "timeago": "0.1.0",
+        "timeago.js": "2.0.3",
         "connect-baddies": "0.0.3"
     },
     "repository": {
