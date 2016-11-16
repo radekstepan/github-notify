@@ -12,7 +12,7 @@ path       = require 'path'
 eco        = require 'eco'
 fs         = require 'fs'
 stylus     = require 'stylus'
-timeago    = new require 'timeago' 
+timeago    = new require 'timeago.js' 
 baddies    = require 'connect-baddies'
 
 pkg = require '../package.json'
