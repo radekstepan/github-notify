@@ -1,34 +1,34 @@
 {
-    "name": "github-notify",
-    "version": "0.4.0-alpha1",
-    "description": "Send emails when new GitHub Issues are created for a repo",
-    "main": "index.js",
-    "dependencies": {
-        "coffee-script": "1.6.2",
-        "node-github": "git://github.com/mikedeboer/node-github.git#master",
-        "nodemailer": "0.4.4",
-        "async": "0.2.8",
-        "eco": "1.1.0-rc-3",
-        "underscore": "1.4.4",
-        "marked": "0.3.2",
-        "flatiron": "0.3.4",
-        "union": "0.3.7",
-        "ejdb": "1.1.6-0",
-        "stylus": "0.32.1",
-        "timeago": "0.1.0",
-        "connect-baddies": "0.0.3"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/radekstepan/github-notify.git"
-    },
-    "keywords": [
-        "github",
-        "smtp",
-        "notifier"
-    ],
-    "author": "Radek <rs676@cam.ac.uk>",
-    "engines": {
-        "node": "0.10.x"
-    }
+  "name": "github-notify",
+  "version": "0.4.0-alpha1",
+  "description": "Send emails when new GitHub Issues are created for a repo",
+  "main": "index.js",
+  "dependencies": {
+    "coffee-script": "1.6.2",
+    "node-github": "git://github.com/mikedeboer/node-github.git#master",
+    "nodemailer": "0.4.4",
+    "async": "0.2.8",
+    "eco": "1.1.0-rc-3",
+    "underscore": "1.4.4",
+    "marked": "0.3.6",
+    "flatiron": "0.4.1",
+    "union": "0.4.3",
+    "ejdb": "1.1.6-0",
+    "stylus": "0.32.1",
+    "timeago": "0.1.0",
+    "connect-baddies": "0.0.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/radekstepan/github-notify.git"
+  },
+  "keywords": [
+    "github",
+    "smtp",
+    "notifier"
+  ],
+  "author": "Radek <rs676@cam.ac.uk>",
+  "engines": {
+    "node": "0.10.x"
+  }
 }
